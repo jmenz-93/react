@@ -2,15 +2,17 @@ interface UWMProps {
   imageUrl: string;
   linkUrl: string;
   altText: string;
+  toolTip: string;
 }
 
-const UWMImage: React.FC<UWMProps> = ({ imageUrl, linkUrl, altText }) => {
+const UWMImage: React.FC<UWMProps> = ({ imageUrl, linkUrl, altText, toolTip }) => {
 
   return (
     <div>
       <a
         href={linkUrl}
         rel="noopener noreferrer"
+        title={toolTip}
       >
         <img
           src={imageUrl}
