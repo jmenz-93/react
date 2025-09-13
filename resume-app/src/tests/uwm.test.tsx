@@ -8,14 +8,14 @@ describe('UWMImage', () => {
 
   it('renders link with correct href', () => {
     const Component = UWM.default;
-    render(<Component imageUrl="/uwm.png" linkUrl="https://uwm.edu/" altText="UWM" />);
+    render(<Component imageUrl="/uwm.png" linkUrl="https://uwm.edu/" altText="UWM" toolTip="Click Image for Website"/>);
     const link = screen.getByRole('link');
     expect(link).toHaveAttribute('href', 'https://uwm.edu/');
   });
 
   it('renders image with alt text', () => {
   const Component = UWM.default;
-  render(<Component imageUrl="/uwm.png" linkUrl="https://uwm.edu/" altText="UWM" />);
+  render(<Component imageUrl="/uwm.png" linkUrl="https://uwm.edu/" altText="UWM" toolTip="Click Image for Website" />);
     expect(screen.getByAltText('UWM')).toBeInTheDocument();
   });
 });
