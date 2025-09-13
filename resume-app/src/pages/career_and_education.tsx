@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from 'react';
-import { Transition} from '@headlessui/react';
+import { Transition } from '@headlessui/react';
 import { useFloating, offset, flip, shift, autoUpdate } from '@floating-ui/react';
 import MUImage from '../components/mu';
 import UWMImage from '../components/uwm';
@@ -33,37 +33,40 @@ const educationDetails = {
 
 const workExperience = [
   {
+    id: "nm-se-iii",
     title: "Software Engineer III, Northwestern Mutual",
     dates: "2024 - Present",
     isCurrent: true,
     duties: [
-      "Developed dbt Models in Snowflake",
-      "",
-      "...",
-      "..."
+      "Developed dbt models in Snowflake.",
+      "Implemented infrastructure-as-code with Terraform.",
+      "Optimized Control-M scheduled pipelines for cost & performance.",
+      "Partnered with product stakeholders to refine data requirements."
     ],
     technologies: ["Snowflake", "dbt", "Python","Control-M", "AWS", "CI/CD", "Terraform"],
     imageUrl: "/nm.png"
   },
   {
+    id: "nm-se-ii",
     title: "Software Engineer II, Northwestern Mutual",
     dates: "2021 - 2024",
     isCurrent: false,
     duties: [
-      "Developed Fact and Dimension Models in Databricks (PII Data).",
-      "Worked with Business Users to Gather Requirements.",
-      "Developed SSRS and Power BI Reports for the Wealth Business Department."
+      "Built fact & dimension models in Databricks (PII-compliant).",
+      "Collaborated with business users to gather and refine requirements.",
+      "Authored SSRS and Power BI reports for Wealth stakeholders."
     ],
     technologies: ["Databricks", "SQL","Python", "Airflow", "CI/CD"],
     imageUrl: "/nm.png"
   },
   {
+    id: "nm-se-i",
     title: "Software Engineer I, Northwestern Mutual",
     dates: "2019 - 2021",
     isCurrent: false,
     duties: [
-      "Developed Datasets in Netezza that Sourced Data from DB2",
-      "",
+      "Engineered Netezza datasets sourcing from DB2.",
+      "Maintained ETL packages (SSIS) supporting reporting workloads."
     ],
     technologies: ["SQL", "Netezza", "SSIS", "SQL Server"],
     imageUrl: "/nm.png"
@@ -97,8 +100,8 @@ export function Career() {
             <h2 className="ml-4 text-sm font-bold uppercase tracking-widest text-slate-600">Work Experience</h2>
           </div>
           <div className="relative ml-6 border-l-2 border-slate-200">
-            {workExperience.map((job, index) => (
-              <div key={index} className="relative mb-10 ml-12">
+            {workExperience.map(job => (
+              <div key={job.id} className="relative mb-10 ml-12">
                 <span className={`absolute -left-[1.8rem] top-1 h-4 w-4 rounded-full ${job.isCurrent ? 'bg-blue-500' : 'bg-slate-300'} ring-8 ring-white`} />
                 <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
                   <div className="flex items-center mb-4">
@@ -134,72 +137,15 @@ export function Career() {
               <h2 className="ml-4 text-sm font-bold uppercase tracking-widest text-slate-600">Education</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {Object.entries(educationDetails).map(([key, details]) => {
-                const [isOpen, setIsOpen] = useState(false);
-                const { refs, floatingStyles } = useFloating({
-                  open: isOpen,
-                  onOpenChange: setIsOpen,
-                  placement: 'bottom',
-                  whileElementsMounted: autoUpdate,
-                  middleware: [offset(10), flip(), shift({ padding: 10 })],
-                });
-
-                return (
-                  <div
-                    key={key}
-                    ref={refs.setReference}
-                    onMouseEnter={() => setIsOpen(true)}
-                    onMouseLeave={() => setIsOpen(false)}
-                  >
-                    <article
-                      className={`bg-white p-6 rounded-xl border border-slate-200 shadow-sm cursor-pointer transition-all duration-300 h-full ${isOpen ? 'shadow-xl -translate-y-1' : 'hover:shadow-lg hover:-translate-y-1'}`}
-                    >
-                      <div className="flex items-center">
-                        <div className="mr-5 flex-shrink-0">
-                          {key === 'uwm' ? (
-                            <UWMImage imageUrl="/uwm.png" linkUrl="https://uwm.edu/" altText="UWM" toolTip="Click Image for Website" />
-                          ) : (
-                            <MUImage imageUrl="/mu.png" linkUrl="https://www.marquette.edu/" altText="MU" toolTip="Click Image for Website" />
-                          )}
-                        </div>
-                        <div>
-                          <h3 className="text-lg font-semibold text-slate-800">{details.title}</h3>
-                          <p className="text-sm text-slate-500">{details.degree}</p>
-                        </div>
-                      </div>
-                    </article>
-                    <Transition
-                      as={Fragment}
-                      show={isOpen}
-                      enter="transition ease-out duration-200"
-                      enterFrom="opacity-0 scale-95"
-                      enterTo="opacity-100 scale-100"
-                      leave="transition ease-in duration-150"
-                      leaveFrom="opacity-100 scale-100"
-                      leaveTo="opacity-0 scale-95"
-                    >
-                      <div
-                        ref={refs.setFloating}
-                        style={floatingStyles}
-                        className="z-20 w-screen max-w-sm"
-                      >
-                        <div className="overflow-hidden rounded-2xl shadow-2xl ring-1 ring-black/5">
-                          <div className="relative backdrop-blur-2xl p-7">
-                                <dl className="space-y-4">
-                                  {details.info.map((item) => (
-                                    <div key={item.label}>
-                                      <dt className="text-xs font-semibold text-slate-500 uppercase tracking-wider">{item.label}</dt>
-                                      <dd className="mt-1 text-sm text-slate-800">{item.value}</dd>
-                                    </div>
-                                  ))}
-                                </dl>
-                          </div>
-                        </div>
-                      </div>
-                    </Transition>
-                  </div>
-                );
-              })}
+              {Object.entries(educationDetails).map(([key, details]) => (
+                <EducationCard
+                  key={key}
+                  eduKey={key}
+                  title={details.title}
+                  degree={details.degree}
+                  info={details.info}
+                />
+              ))}
             </div>
           </section>
 
@@ -233,4 +179,78 @@ export function Career() {
   );
 }
 
-export default React.memo(Career);
+interface EducationCardProps {
+  eduKey: string;
+  title: string;
+  degree: string;
+  info: { label: string; value: string }[];
+}
+
+const EducationCard: React.FC<EducationCardProps> = ({ eduKey, title, degree, info }) => {
+  const [open, setOpen] = useState(false);
+  const { refs, floatingStyles } = useFloating({
+    open,
+    onOpenChange: setOpen,
+    placement: 'bottom',
+    whileElementsMounted: autoUpdate,
+    middleware: [offset(10), flip(), shift({ padding: 10 })],
+  });
+
+  return (
+    <div
+      ref={refs.setReference}
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+      className="relative"
+    >
+      <article
+        className={`bg-white p-6 rounded-xl border border-slate-200 shadow-sm cursor-pointer transition-all duration-300 h-full ${open ? 'shadow-xl -translate-y-1' : 'hover:shadow-lg hover:-translate-y-1'}`}
+      >
+        <div className="flex items-center">
+          <div className="mr-5 flex-shrink-0">
+            {eduKey === 'uwm' ? (
+              <UWMImage imageUrl="/uwm.png" linkUrl="https://uwm.edu/" altText="UWM" toolTip="Click Image for Website" />
+            ) : (
+              <MUImage imageUrl="/mu.png" linkUrl="https://www.marquette.edu/" altText="MU" toolTip="Click Image for Website" />
+            )}
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold text-slate-800">{title}</h3>
+            <p className="text-sm text-slate-500">{degree}</p>
+          </div>
+        </div>
+      </article>
+      <Transition
+        as={Fragment}
+        show={open}
+        enter="transition ease-out duration-200"
+        enterFrom="opacity-0 scale-95"
+        enterTo="opacity-100 scale-100"
+        leave="transition ease-in duration-150"
+        leaveFrom="opacity-100 scale-100"
+        leaveTo="opacity-0 scale-95"
+      >
+        <div
+          ref={refs.setFloating}
+          style={floatingStyles}
+          className="z-20 w-screen max-w-sm"
+        >
+          <div className="overflow-hidden rounded-2xl shadow-2xl ring-1 ring-black/5">
+            <div className="relative backdrop-blur-2xl p-7">
+              <dl className="space-y-4">
+                {info.map(item => (
+                  <div key={item.label}>
+                    <dt className="text-xs font-semibold text-slate-500 uppercase tracking-wider">{item.label}</dt>
+                    <dd className="mt-1 text-sm text-slate-800">{item.value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          </div>
+        </div>
+      </Transition>
+    </div>
+  );
+};
+
+export default Career;
