@@ -77,7 +77,6 @@ const workExperience = [
 export function Career() {
 
   return (
-    <>
       <div className="min-h-screen bg-white py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <h1 className="sr-only">Career & Education</h1>
@@ -173,9 +172,6 @@ export function Career() {
         </section>
         </div>
       </div>
-
-      {/* Education Modal - REMOVED */}
-    </>
   );
 }
 
