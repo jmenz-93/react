@@ -15,9 +15,7 @@ const educationDetails = {
         degree: "Bachelor's in Information Science & Technology",
         info: [
             { label: "Graduated", value: "May 2017"},
-            { label: "GPA", value: "3.8 / 4.0" },
-            { label: "Honors", value: "Graduated Magna Cum Laude" },
-            { label: "Relevant Coursework", value: "Relational Databases and Data Structures, Information Security, Web Development" },
+            { label: "GPA", value: "3.8 / 4.0" }
         ],
     },
     mu: {
@@ -25,7 +23,8 @@ const educationDetails = {
         degree: "Master's in Computer and Information Science",
         imageUrl: "/mu.png",
         info: [
-            { label: "GPA", value: "3.9 / 4.0" },
+            { label: "Anticipated Graduation", value: "December 2026"},
+            { label: "GPA", value: "3.8 / 4.0" },
             { label: "Relevant Coursework", value: "Software Architecture, DevOps & CI/CD, Cloud Computing, Secure Software Development" },
         ],
     },
@@ -84,8 +83,8 @@ export function Career() {
           {/* Summary of Myself */}
           <section className="mb-16">
           <article className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
-            <p className="text-slate-600 leading-relaxed text-center text-lg">
-                Add Details
+            <p className="text-slate-600 leading-relaxed text-center text-lg max-w-3xl mx-auto">
+                A highly motivated data professional with 7 years of experience building and maintaining robust data solutions. Passionate about leveraging modern technologies to tackle complex challenges and continuously expanding my skill set.
             </p>
           </article>
         </section>
@@ -100,22 +99,23 @@ export function Career() {
           </div>
           <div className="relative ml-6 border-l-2 border-slate-200">
             {workExperience.map(job => (
-              <div key={job.id} className="relative mb-10 ml-12">
-                <span className={`absolute -left-[1.8rem] top-1 h-4 w-4 rounded-full ${job.isCurrent ? 'bg-blue-500' : 'bg-slate-300'} ring-8 ring-white`} />
-                <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+              <div key={job.id} className="relative mb-12 ml-12">
+                <span className={`absolute -left-[1.8rem] top-6 h-4 w-4 rounded-full border-2 border-white ${job.isCurrent ? 'bg-blue-600 ring-4 ring-blue-50' : 'bg-slate-300 ring-4 ring-slate-50'}`} />
+                <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm transition-all hover:shadow-md hover:border-slate-300">
                   <div className="flex items-center mb-4">
-                  <NMLogo imageUrl={job.imageUrl} linkUrl='https://www.northwesternmutual.com/' altText={`${job.title} logo`} />
-                  <h3 className="text-xl font-semibold text-slate-800 mb-1 ml-3">{job.title}</h3>
+                    <NMLogo imageUrl={job.imageUrl} linkUrl='https://www.northwesternmutual.com/' altText={`${job.title} logo`} />
+                    <div className="ml-4">
+                      <h3 className="text-lg font-bold text-slate-800">{job.title}</h3>
+                      <p className="text-sm font-medium text-slate-500">{job.dates}</p>
+                    </div>
                   </div>
-                  <p className="text-sm text-slate-500 mb-4">{job.dates}</p>
-                  <ul className="list-disc pl-5 space-y-2 text-sm text-slate-600 leading-6">
+                  <ul className="list-disc pl-5 space-y-2 text-sm text-slate-600 leading-relaxed marker:text-slate-400">
                     {job.duties.map((duty, i) => <li key={i}>{duty}</li>)}
                   </ul>
-                  <div className="mt-6 pt-4 border-t border-slate-200/80">
-                      <h4 className="text-xs font-bold uppercase text-slate-500 mb-3">Technologies Used</h4>
+                  <div className="mt-6 pt-4 border-t border-slate-100">
                       <div className="flex flex-wrap gap-2">
                         {job.technologies.map(tech => (
-                          <span key={tech} className="px-3 py-1 text-xs font-medium text-teal-800 bg-teal-100/80 rounded-full">
+                          <span key={tech} className="px-2.5 py-1 text-xs font-medium text-slate-600 bg-slate-100 rounded-md border border-slate-200">
                             {tech}
                           </span>
                         ))}
@@ -157,13 +157,13 @@ export function Career() {
                 <h2 className="ml-4 text-sm font-bold uppercase tracking-widest text-slate-600">Certifications</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <article className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm cursor-pointer transition-all duration-300 h-full hover:shadow-lg hover:-translate-y-1">
+          <article className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm cursor-pointer transition-all duration-300 h-full hover:shadow-lg hover:-translate-y-1 group">
                     <div className="flex items-center">
                         <div className="mr-5 flex-shrink-0">
                             <AWSAIImage imageUrl="/aws-ai-pract.png" altText="AWS AI Practitioner Badge" linkUrl="https://www.credly.com/badges/79ea3f7e-5b24-4d93-beee-982818b32699/public_url" />
                         </div>
                         <div>
-                            <h3 className="text-lg font-semibold text-slate-800">AWS Certified AI Practitioner</h3>
+                            <h3 className="text-lg font-bold text-slate-800 group-hover:text-blue-600 transition-colors">AWS Certified AI Practitioner</h3>
                             <p className="text-sm text-slate-500">Issued by Amazon Web Services</p>
                         </div>
                     </div>
