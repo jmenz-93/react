@@ -9,7 +9,7 @@ const educationDetails = {
     uwm: {
         title: "University of Wisconsin-Milwaukee",
         degree: "Bachelor's in Information Science & Technology",
-        logo: <UWMImage imageUrl="/uwm.png" linkUrl="https://uwm.edu/" altText="UWM" toolTip="Click Image for Website" />,
+        logo: <UWMImage imageUrl="/uwm.png" linkUrl="https://uwm.edu/" altText="UWM"/>,
         info: [
             { label: "Graduated", value: "May 2017"},
             { label: "GPA", value: "3.8 / 4.0" }
@@ -18,7 +18,7 @@ const educationDetails = {
     mu: {
         title: "Marquette University",
         degree: "Master's in Computer and Information Science",
-        logo: <MUImage imageUrl="/mu.png" linkUrl="https://www.marquette.edu/" altText="MU" toolTip="Click Image for Website" />,
+        logo: <MUImage imageUrl="/mu.png" linkUrl="https://www.marquette.edu/" altText="MU" />,
         info: [
             { label: "Anticipated Graduation", value: "December 2026"},
             { label: "GPA", value: "3.8 / 4.0" }
@@ -81,8 +81,8 @@ export function Career() {
             <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-6 tracking-tight">
               Hi, I'm Jonathan.
             </h2>
-            <p className="text-lg sm:text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto font-light">
-                I'm a Software Engineer based in Milwaukee with a passion for turning complex data into clear insights. Currently at Northwestern Mutual and pursuing my Master's at Marquette, I specialize in building robust data platforms, cloud infrastructure, and the occasional web app (like this one!).
+            <p className="text-lg sm:text-xl text-slate-600 leading-relaxed max-w-3xl mx-auto font-light">
+                I'm a Software Engineer in Milwaukee, WI, working at Northwestern Mutual where I build data models and technologies on Snowflake for investment data. I'm currently pursuing my Master's in Computer and Information Science at Marquette University, with an anticipated graduation in December 2026. Analytical by nature, I'm always looking to grow—whether through coursework, online learning, or hands-on projects. Outside of work, I love cooking and reading non-fiction books. Check out my hobbies section to see what I'm currently reading and whipping up in the kitchen!
             </p>
           </section>
 

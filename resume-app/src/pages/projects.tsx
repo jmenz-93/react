@@ -4,7 +4,6 @@ const books = [
   {
     title: "Basic Economics",
     author: "Thomas Sowell",
-    status: "Reading",
     description: "A common-sense guide to how the economy works, explaining the principles underlying different economic systems.",
     color: "bg-emerald-100 text-emerald-800",
     imageUrl: "https://target.scene7.com/is/image/Target/GUEST_c22f0926-33c3-4bdf-99a8-9c6dd9701f25?wid=1200&hei=1200&qlt=80"
@@ -33,6 +32,13 @@ export function Projects() {
   return (
     <div className="py-10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
+
+      {/* <section>
+      <div className="flex items-center mb-8">
+      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-orange-100/60"></div>
+      </div>
+
+      </section> */}
         {/* Books Section */}
         <section className="mb-20">
           <div className="flex items-center mb-8">
@@ -55,12 +61,6 @@ export function Projects() {
                 )}
                 <div className="flex-1 flex flex-col items-start justify-between w-full gap-2">
                   <div className="w-full">
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-1">
-                        <h3 className="text-xl font-bold text-slate-800 group-hover:text-blue-600 transition-colors">{book.title}</h3>
-                        <span className={`self-start sm:self-auto px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase ${book.color}`}>
-                            {book.status}
-                        </span>
-                    </div>
                     <p className="text-sm font-medium text-slate-500 mb-4">by {book.author}</p>
                     <p className="text-slate-600 leading-relaxed">{book.description}</p>
                   </div>
