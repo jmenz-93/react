@@ -1,20 +1,34 @@
 import Avatar from './avatar';
 import GitImage from './github';
 import LinkedInImage from './linkedin';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
+  const location = useLocation();
+
+  const isActive = (path: string) => {
+    if (path === '/career_and_education' && location.pathname === '/') return true;
+    return location.pathname === path;
+  };
+
+  const getLinkClass = (path: string) => 
+    `px-4 py-1.5 text-sm font-medium rounded-full transition-all ${
+      isActive(path) 
+        ? 'bg-slate-200 text-slate-900 shadow-inner' 
+        : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
+    }`;
+
   return (
-    <header className="w-full py-5 px-4 sm:px-6 lg:px-8">
+    <header className="w-full py-4 px-4 sm:px-6 lg:px-8 sticky top-0 z-50 bg-white/80 backdrop-blur-md transition-all duration-300">
       <nav className="relative flex items-center justify-between max-w-7xl mx-auto">
         <div className="flex-1 flex items-center justify-start">
           <Link to="/career_and_education" className="transition-transform hover:scale-105">
             <Avatar />
           </Link>
         </div>
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:flex items-center gap-2 shadow-lg rounded-full px-4 py-2 bg-white/70 dark:bg-neutral-800/70 backdrop-blur-sm border border-slate-200/80 dark:border-neutral-700/80">
-          <Link to="/career_and_education" className="px-4 py-1.5 text-sm font-medium text-gray-700 dark:text-gray-200 rounded-full transition-colors hover:bg-gray-200/50 dark:hover:bg-neutral-700/50">Career & Education</Link>
-          <Link to="/projects" className="px-4 py-1.5 text-sm font-medium text-gray-700 dark:text-gray-200 rounded-full transition-colors hover:bg-gray-200/50 dark:hover:bg-neutral-700/50">Hobbies & Projects</Link>
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:flex items-center gap-1 shadow-sm rounded-full px-2 py-1.5 bg-white border border-slate-200">
+          <Link to="/career_and_education" className={getLinkClass('/career_and_education')}>Career & Education</Link>
+          <Link to="/projects" className={getLinkClass('/projects')}>Hobbies & Projects</Link>
         </div>
         <div className="flex-1 flex items-center justify-end gap-4">
           <GitImage
@@ -32,9 +46,9 @@ const Navbar = () => {
         </div>
       </nav>
   
-      <div className="mt-6 flex md:hidden items-center justify-center gap-2 shadow-lg rounded-full px-3 py-2 bg-white/70 dark:bg-neutral-800/70 backdrop-blur-sm border border-slate-200/80 dark:border-neutral-700/80">
-        <Link to="/career_and_education" className="px-3 py-1 text-sm font-medium text-gray-700 dark:text-gray-200 rounded-full transition-colors hover:bg-gray-200/50 dark:hover:bg-neutral-700/50">Career & Education</Link>
-        <Link to="/projects" className="px-3 py-1 text-sm font-medium text-gray-700 dark:text-gray-200 rounded-full transition-colors hover:bg-gray-200/50 dark:hover:bg-neutral-700/50">Hobbies & Projects</Link>
+      <div className="mt-4 flex md:hidden items-center justify-center gap-1 shadow-sm rounded-full px-2 py-1.5 bg-white border border-slate-200">
+        <Link to="/career_and_education" className={getLinkClass('/career_and_education')}>Career & Education</Link>
+        <Link to="/projects" className={getLinkClass('/projects')}>Hobbies & Projects</Link>
       </div>
     </header>
   );
