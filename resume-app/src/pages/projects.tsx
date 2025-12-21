@@ -1,30 +1,31 @@
 import { BookOpenIcon, FireIcon } from '../components/icons';
+import BasicEconomics from '../components/basic_economics';
+import RabbitLogo from '../components/rabbit';
 
 const books = [
   {
     title: "Basic Economics",
     author: "Thomas Sowell",
-    description: "A common-sense guide to how the economy works, explaining the principles underlying different economic systems.",
-    color: "bg-emerald-100 text-emerald-800",
-    imageUrl: "https://target.scene7.com/is/image/Target/GUEST_c22f0926-33c3-4bdf-99a8-9c6dd9701f25?wid=1200&hei=1200&qlt=80"
+    description: "Basic Economics is a citizen's guide to economics, written for those who want to understand how the economy works but have no interest in jargon or equations.",
+    imageUrl: "/basic_economics.png"
   }
 ];
 
 const cooking = [
   {
-    title: "Homemade Pasta",
+    title: "Rabbit Gnocchi Stew",
     description: "Hand-rolled tagliatelle with a slow-cooked bolognese sauce.",
-    tags: ["Italian", "Dinner", "Homemade"]
+    imageUrl: "/rabbit.png" // Store string, not component
   },
   {
-    title: "Sourdough Bread",
+    title: "Pumpkin Pasta",
     description: "Artisan sourdough loaf with a crispy crust and open crumb.",
-    tags: ["Baking", "Bread", "Fermentation"]
+    imageUrl: null, // Handle items without images gracefully
   },
   {
     title: "Spicy Ramen",
     description: "Rich tonkotsu broth with chashu pork and soft-boiled egg.",
-    tags: ["Japanese", "Soup", "Comfort Food"]
+    imageUrl: null
   }
 ];
 
@@ -33,12 +34,6 @@ export function Projects() {
     <div className="py-10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
 
-      {/* <section>
-      <div className="flex items-center mb-8">
-      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-orange-100/60"></div>
-      </div>
-
-      </section> */}
         {/* Books Section */}
         <section className="mb-20">
           <div className="flex items-center mb-8">
@@ -52,11 +47,7 @@ export function Projects() {
               <article key={book.title} className="group bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex flex-col sm:flex-row items-start gap-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-slate-300">
                 {book.imageUrl && (
                   <div className="shrink-0 w-full sm:w-auto flex justify-center sm:justify-start">
-                    <img 
-                      src={book.imageUrl} 
-                      alt={book.title} 
-                      className="w-40 h-auto object-contain rounded shadow-md transform group-hover:scale-105 transition-transform duration-300"
-                    />
+                    <BasicEconomics imageUrl={book.imageUrl} altText={book.title} />
                   </div>
                 )}
                 <div className="flex-1 flex flex-col items-start justify-between w-full gap-2">
@@ -71,26 +62,26 @@ export function Projects() {
         </section>
 
         {/* Cooking Section */}
-        <section>
+        <section className="mb-20">
           <div className="flex items-center mb-8">
             <div className="flex h-12 w-12 items-center justify-center rounded-full bg-orange-100/60">
               <FireIcon className="h-6 w-6 text-orange-600" />
             </div>
-            <h2 className="ml-4 text-sm font-bold uppercase tracking-widest text-slate-600">Culinary Adventures</h2>
+            <h2 className="ml-4 text-sm font-bold uppercase tracking-widest text-slate-600">Kitchen Creations</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {cooking.map((dish) => (
               <article key={dish.title} className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-slate-300 h-full flex flex-col group">
                 <div className="flex-1">
-                    <h3 className="text-lg font-bold text-slate-800 mb-2 group-hover:text-blue-600 transition-colors">{dish.title}</h3>
+                    <h3 className="text-lg font-bold text-slate-800 mb-2 transition-colors">{dish.title}</h3>
                     <p className="text-sm text-slate-600 leading-relaxed mb-4">{dish.description}</p>
-                </div>
-                <div className="flex flex-wrap gap-2 mt-auto">
-                  {dish.tags.map(tag => (
-                    <span key={tag} className="px-2 py-1 text-xs font-medium text-orange-800 bg-orange-50 rounded-md border border-orange-100">
-                      {tag}
-                    </span>
-                  ))}
+                    
+                    {dish.imageUrl && (
+                      <div className="flex justify-center w-full mt-4">
+                        <RabbitLogo imageUrl={dish.imageUrl} altText={dish.title} />
+                      </div>
+                    )}
+                    
                 </div>
               </article>
             ))}

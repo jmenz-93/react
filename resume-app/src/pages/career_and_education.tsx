@@ -20,6 +20,7 @@ const educationDetails = {
         degree: "Master's in Computer and Information Science",
         logo: <MUImage imageUrl="/mu.png" linkUrl="https://www.marquette.edu/" altText="MU" />,
         info: [
+            { label: "Currently Taking", value: "Software Quality Assurance"},
             { label: "Anticipated Graduation", value: "December 2026"},
             { label: "GPA", value: "3.8 / 4.0" }
         ],
@@ -102,7 +103,7 @@ export function Career() {
                   <div className="flex items-center mb-4">
                     <NMLogo imageUrl={job.imageUrl} linkUrl='https://www.northwesternmutual.com/' altText={`${job.title} logo`} />
                     <div className="ml-4">
-                      <h3 className="text-lg font-bold text-slate-800 group-hover:text-blue-600 transition-colors">{job.title}</h3>
+                      <h3 className="text-lg font-bold text-slate-800 transition-colors">{job.title}</h3>
                       <p className="text-sm font-medium text-slate-500">{job.dates}</p>
                     </div>
                   </div>
@@ -140,7 +141,7 @@ export function Career() {
                       {details.logo}
                     </div>
                     <div>
-                      <h3 className="text-lg font-bold text-slate-800 group-hover:text-blue-600 transition-colors">{details.title}</h3>
+                      <h3 className="text-lg font-bold text-slate-800  transition-colors">{details.title}</h3>
                       <p className="text-sm text-slate-500">{details.degree}</p>
                     </div>
                   </div>
@@ -163,7 +164,7 @@ export function Career() {
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-amber-100/60">
                     <SparklesIcon className="h-6 w-6 text-amber-600" />
                 </div>
-                <h2 className="ml-4 text-sm font-bold uppercase tracking-widest text-slate-600">Certifications</h2>
+                <h2 className="ml-4 text-sm font-bold uppercase tracking-widest text-slate-600">Tech Certifications</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {/* AWS Card */}
@@ -173,7 +174,7 @@ export function Career() {
                             <AWSAIImage imageUrl="/aws-ai-pract.png" altText="AWS AI Practitioner Badge" linkUrl="https://www.credly.com/badges/79ea3f7e-5b24-4d93-beee-982818b32699/public_url" />
                         </div>
                         <div>
-                            <h3 className="text-lg font-bold text-slate-800 group-hover:text-blue-600 transition-colors">AWS Certified AI Practitioner</h3>
+                            <h3 className="text-lg font-bold text-slate-800  transition-colors">AWS Certified AI Practitioner</h3>
                             <p className="text-sm text-slate-500">Issued by Amazon Web Services</p>
                         </div>
                     </div>
@@ -191,7 +192,7 @@ export function Career() {
                         </div>
                         <div>
                             <div className="flex items-center gap-2 mb-1">
-                                <h3 className="text-lg font-bold text-slate-800 group-hover:text-blue-600 transition-colors">CompTIA Security+</h3>
+                                <h3 className="text-lg font-bold text-slate-800 transition-colors">CompTIA Security+</h3>
                                 <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-amber-100 text-amber-700 tracking-wide">Studying</span>
                             </div>
                             <p className="text-sm text-slate-500 mb-2">Issued by CompTIA</p>
