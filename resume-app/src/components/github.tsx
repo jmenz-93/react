@@ -19,6 +19,7 @@ const GitImage: React.FC<GitProps> = ({ imageUrl, linkUrl, altText, toolTip }) =
           alt={altText}
           loading="lazy"
           style={{ display: 'block' }}
+          className="dark:invert"
         />
       </a>
     </div>

@@ -4,10 +4,12 @@ import Footer from './components/footer';
 import Career from './pages/career_and_education';
 import Projects from './pages/projects';
 import { ErrorPage } from './pages/error_page';
+import { ThemeProvider } from './theme/ThemeProvider';
 
 
 function App() {
   return (
+    <ThemeProvider>
       <BrowserRouter>
         <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950">
           <div className="container mx-auto flex-1 flex flex-col sm:px-6 md:px-8 lg:px-12 xl:px-16 sm:max-w-md md:max-w-lg lg:max-w-4xl xl:max-w-7xl">
@@ -26,6 +28,7 @@ function App() {
           </div>
         </div>
       </BrowserRouter>
+    </ThemeProvider>
   );
 }
 

@@ -19,6 +19,7 @@ const LinkedInImage: React.FC<LinkedInProps> = ({ imageUrl, linkUrl, altText, to
           alt={altText}
           loading="lazy"
           style={{ display: 'block' }}
+          className="dark:brightness-0 dark:invert"
         />
       </a>
     </div>
