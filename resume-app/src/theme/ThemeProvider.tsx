@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useMemo, useState, useCallback } from 'react';
+import React, { createContext, useContext, useEffect, useMemo, useState, useCallback, useRef } from 'react';
 import {
   applyDarkClass,
   getSystemIsDark,
@@ -15,18 +15,34 @@ interface ThemeContextValue {
 
 const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
 
-export function ThemeProvider({ children }: Readonly<{ children: React.ReactNode }>) {
-  const [themeMode, setThemeModeState] = useState<ThemeMode>(() => getStoredThemeMode());
-  const [systemIsDark, setSystemIsDark] = useState<boolean>(() => getSystemIsDark());
+function useSystemDark() {
+  const [isDark, setIsDark] = useState(() => getSystemIsDark());
 
   useEffect(() => {
-    const media = globalThis.matchMedia?.('(prefers-color-scheme: dark)');
-    if (!media?.addEventListener) return;
-
-    const onChange = () => setSystemIsDark(media.matches);
-    media.addEventListener('change', onChange);
-    return () => media.removeEventListener('change', onChange);
+    const media = window.matchMedia('(prefers-color-scheme: dark)');
+    const listener = (e: MediaQueryListEvent) => setIsDark(e.matches);
+    
+    media.addEventListener('change', listener);
+    return () => media.removeEventListener('change', listener);
   }, []);
+
+  return isDark;
+}
+
+export function ThemeProvider({ children }: Readonly<{ children: React.ReactNode }>) {
+  const systemIsDark = useSystemDark();
+  const [themeMode, setThemeModeState] = useState<ThemeMode>(() => getStoredThemeMode());
+  
+  // Track previous system state to detect changes
+  const prevSystemDarkRef = useRef(systemIsDark);
+
+  // If system theme changes, reset override to 'system'
+  useEffect(() => {
+    if (prevSystemDarkRef.current !== systemIsDark) {
+      setThemeModeState('system');
+      prevSystemDarkRef.current = systemIsDark;
+    }
+  }, [systemIsDark]);
 
   const isDark = themeMode === 'system' ? systemIsDark : themeMode === 'dark';
 

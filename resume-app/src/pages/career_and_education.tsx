@@ -34,9 +34,9 @@ const workExperience = [
     dates: "2024 - Present",
     isCurrent: true,
     duties: [
-      "Developed dbt models in Snowflake.",
-      "Implemented infrastructure-as-code with Terraform.",
-      "Optimized Control-M scheduled pipelines for cost & performance.",
+      "Develop dbt models and data quality tests in Snowflake.",
+      "Implement infrastructure-as-code with Terraform.",
+      "Optimized Control-M scheduled pipelines.",
       "Partnered with product stakeholders to refine data requirements."
     ],
     technologies: ["Snowflake", "dbt", "Python","Control-M", "AWS", "CI/CD", "Terraform"],

@@ -13,14 +13,14 @@ const Navbar = () => {
   };
 
   const getLinkClass = (path: string) => 
-    `px-4 py-1.5 text-sm font-medium rounded-full transition-all ${
+    `px-4 py-1.5 text-sm font-medium rounded-full ${
       isActive(path) 
         ? 'bg-slate-200 text-slate-900 shadow-inner dark:bg-slate-700 dark:text-slate-100' 
         : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100'
     }`;
 
   return (
-    <header className="w-full py-4 px-4 sm:px-6 lg:px-8 sticky top-0 z-50 bg-white/80 backdrop-blur-md transition-all duration-300 dark:bg-slate-900/80">
+    <header className="w-full py-4 px-4 sm:px-6 lg:px-8 sticky top-0 z-50 bg-white/80 backdrop-blur-md dark:bg-slate-900/80">
       <nav className="relative flex items-center justify-between max-w-7xl mx-auto">
         <div className="flex-1 flex items-center justify-start">
           <Link to="/career_and_education" className="transition-transform hover:scale-105">
@@ -37,7 +37,6 @@ const Navbar = () => {
             imageUrl="/github-mark.png"
             linkUrl="https://github.com/jmenz-93"
             altText="Github"
-            toolTip="Click to view my Git"
           />
           <LinkedInImage
             imageUrl="/linkedin.png"
