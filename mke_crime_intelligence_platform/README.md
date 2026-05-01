@@ -1,5 +1,7 @@
 # MKE Crime Intelligence Platform
 
+<img width="1000" height="500" alt="Screenshot 2026-04-30 at 7 19 08 PM" src="https://github.com/user-attachments/assets/86354cc4-3538-4b37-ac98-a4dfbd7f87a2" />
+
 A frontend application that lets users:
 
 - Upload a Milwaukee Police Department crime CSV file.
